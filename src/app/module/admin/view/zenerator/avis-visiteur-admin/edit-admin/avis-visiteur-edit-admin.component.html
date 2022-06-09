@@ -1,0 +1,97 @@
+<p-dialog [(visible)]="editAvisVisiteurDialog" [style]="{width: '70vw'}"
+          header="Avis visiteur" [modal]="true"
+          styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Avis visiteur">
+                <div class="p-grid">
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="1">Reference</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText
+                               placeholder="Reference"
+                               id="1" [(ngModel)]="selectedAvisVisiteur.reference"
+                        />
+
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="2">Email visiteur</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText
+                               placeholder="Email visiteur"
+                               id="2" [(ngModel)]="selectedAvisVisiteur.emailVisiteur"
+                        />
+
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="3">Objet</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText
+                               placeholder="Objet"
+                               id="3" [(ngModel)]="selectedAvisVisiteur.objet"
+                        />
+
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="4">Message</label>
+                        <textarea id="4" pInputTextarea rows="5" cols="30"
+                                  placeholder="Message" [(ngModel)]="selectedAvisVisiteur.message"
+                        ></textarea>
+
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="5">Ratting</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2" id="5"
+                                       placeholder="Ratting"
+                                       [(ngModel)]="selectedAvisVisiteur.ratting">
+                        </p-inputNumber>
+
+                    </div>
+
+                    <div class="p-field p-col-11 p-md-5">
+                        <label for="6">Type avis</label>
+                        <p-dropdown [options]="typeAviss" [(ngModel)]="selectedAvisVisiteur.typeAvisVo"
+                                    id="6" [filter]="true" filterMatchMode="contains"
+                                    [showClear]="true"
+                                    optionLabel="libelle"
+                                    placeholder="Type avis">
+                        </p-dropdown>
+
+                    </div>
+                    <div class="p-col-1">
+                        <label></label>
+                        <button pButton pRipple type="button"
+                                icon="pi pi-plus" (click)="openCreatetypeAvis('typeAvis')"
+                                class="p-button-success one-colonne-btn-success-align"></button>
+                    </div>
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideCreateDialog()"></button>
+            </div>
+            <div>
+                <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px"
+                        (click)="edit()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+    <app-type-avis-create-admin></app-type-avis-create-admin>
+
+
+</p-dialog>

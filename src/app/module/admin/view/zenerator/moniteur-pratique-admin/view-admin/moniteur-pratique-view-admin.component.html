@@ -1,0 +1,138 @@
+<p-dialog [(visible)]="viewMoniteurPratiqueDialog" [style]="{width: '70vw'}"
+          header="Moniteur pratique" [modal]="true"
+          styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Moniteur pratique">
+                <div class="p-grid">
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="1">Reference</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Reference" [(ngModel)]="selectedMoniteurPratique.reference"
+                               id="1" [(ngModel)]="selectedMoniteurPratique.reference"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="2">Nom</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Nom" [(ngModel)]="selectedMoniteurPratique.nom"
+                               id="2" [(ngModel)]="selectedMoniteurPratique.nom"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="3">Prenom</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Prenom" [(ngModel)]="selectedMoniteurPratique.prenom"
+                               id="3" [(ngModel)]="selectedMoniteurPratique.prenom"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="4">Email</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Email" [(ngModel)]="selectedMoniteurPratique.email"
+                               id="4" [(ngModel)]="selectedMoniteurPratique.email"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="5">Adress</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Adress" [(ngModel)]="selectedMoniteurPratique.adress"
+                               id="5" [(ngModel)]="selectedMoniteurPratique.adress"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="6">Phone</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Phone" [(ngModel)]="selectedMoniteurPratique.phone"
+                               id="6" [(ngModel)]="selectedMoniteurPratique.phone"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="7">Fix</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Fix" [(ngModel)]="selectedMoniteurPratique.fix"
+                               id="7" [(ngModel)]="selectedMoniteurPratique.fix"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="8">Lieu naissance</label>
+                        <p-calendar id="8" [disabled]="true"
+                                    placeholder="Lieu naissance" [(ngModel)]="selectedMoniteurPratique.lieuNaissance"
+                                    dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="9">Date naissance</label>
+                        <p-calendar id="9" [disabled]="true"
+                                    placeholder="Date naissance" [(ngModel)]="selectedMoniteurPratique.dateNaissance"
+                                    dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="10">Cin</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Cin" [(ngModel)]="selectedMoniteurPratique.cin"
+                               id="10" [(ngModel)]="selectedMoniteurPratique.cin"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="11">Gender</label>
+                        <p-dropdown [options]="genders" [(ngModel)]="selectedMoniteurPratique.genderVo"
+                                    id="11" [filter]="true" filterMatchMode="contains"
+                                    [showClear]="true" [disabled]="true"
+                                    optionLabel="libelle"
+                                    placeholder="Gender">
+                        </p-dropdown>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="12">Picture</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Picture" [(ngModel)]="selectedMoniteurPratique.picture"
+                               id="12" [(ngModel)]="selectedMoniteurPratique.picture"
+                               autofocus>
+                    </div>
+
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+    <app-gender-create-admin></app-gender-create-admin>
+
+
+</p-dialog>
+
+
+

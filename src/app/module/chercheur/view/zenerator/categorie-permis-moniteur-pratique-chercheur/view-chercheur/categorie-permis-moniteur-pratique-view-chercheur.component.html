@@ -1,0 +1,57 @@
+
+<p-dialog [(visible)]="viewCategoriePermisMoniteurPratiqueDialog" [style]="{width: '70vw'}"
+        header="Categorie permis moniteur pratique" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Categorie permis moniteur pratique">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="1">Categorie permis</label>
+                                    <p-dropdown [options]="categoriePermiss" [(ngModel)]="selectedCategoriePermisMoniteurPratique.categoriePermisVo"
+                                            id="1" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libele"
+                                            placeholder="Categorie permis">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="2">Moniteur pratique</label>
+                                    <p-dropdown [options]="moniteurPratiques" [(ngModel)]="selectedCategoriePermisMoniteurPratique.moniteurPratiqueVo"
+                                            id="2" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="reference"
+                                            placeholder="Moniteur pratique">
+                                    </p-dropdown>
+                                </div>
+
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+            <app-categorie-permis-create-chercheur></app-categorie-permis-create-chercheur>
+            <app-moniteur-pratique-create-chercheur></app-moniteur-pratique-create-chercheur>
+
+
+
+</p-dialog>
+
+
+

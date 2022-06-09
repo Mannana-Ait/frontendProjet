@@ -1,0 +1,312 @@
+{
+  'EtatMessage': {
+    'CREATE': {
+      'DIALOG_HEADER': 'Etat message',
+      'TAB-HEADER': 'Etat message',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    },
+    'EDIT': {
+      'DIALOG_HEADER': 'Etat message',
+      'TAB-HEADER': 'Etat message',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    }
+  },
+  'Jour': {
+    'CREATE': {
+      'DIALOG_HEADER': 'Jour',
+      'TAB-HEADER': 'Jour',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    },
+    'EDIT': {
+      'DIALOG_HEADER': 'Jour',
+      'TAB-HEADER': 'Jour',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    }
+  },
+  'Message': {
+    'CREATE': {
+      'DIALOG_HEADER': 'Message',
+      'TAB-HEADER': 'Message',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    },
+    'EDIT': {
+      'DIALOG_HEADER': 'Message',
+      'TAB-HEADER': 'Message',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    }
+  },
+  'AvisVisiteur': {
+    'CREATE': {
+      'DIALOG_HEADER': 'Avis visiteur',
+      'TAB-HEADER': 'Avis visiteur',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    },
+    'EDIT': {
+      'DIALOG_HEADER': 'Avis visiteur',
+      'TAB-HEADER': 'Avis visiteur',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    }
+  },
+  'MoniteurTheorique': {
+    'CREATE': {
+      'DIALOG_HEADER': 'Moniteur theorique',
+      'TAB-HEADER': 'Moniteur theorique',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    },
+    'EDIT': {
+      'DIALOG_HEADER': 'Moniteur theorique',
+      'TAB-HEADER': 'Moniteur theorique',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    }
+  },
+  'Gender': {
+    'CREATE': {
+      'DIALOG_HEADER': 'Gender',
+      'TAB-HEADER': 'Gender',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    },
+    'EDIT': {
+      'DIALOG_HEADER': 'Gender',
+      'TAB-HEADER': 'Gender',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    }
+  },
+  'CategoriePermis': {
+    'CREATE': {
+      'DIALOG_HEADER': 'Categorie permis',
+      'TAB-HEADER': 'Categorie permis',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    },
+    'EDIT': {
+      'DIALOG_HEADER': 'Categorie permis',
+      'TAB-HEADER': 'Categorie permis',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    }
+  },
+  'Ecole': {
+    'CREATE': {
+      'DIALOG_HEADER': 'Ecole',
+      'TAB-HEADER': 'Ecole',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK',
+      'VEHICULES-TAB-PAN-HEADER': '',
+      'ECOLE-LABEL': 'Ecole',
+      'ECOLE-PLACEHOLDER': 'Ecole',
+      'VEHICULES-COL': 'Vehicules',
+      'VEHICULES-COL': 'Vehicules',
+      'MONITEUR-THEORIQUES-TAB-PAN-HEADER': '',
+      'MONITEUR-THEORIQUES-COL': 'Moniteur theoriques',
+      'MONITEUR-PRATIQUES-TAB-PAN-HEADER': '',
+      'MONITEUR-PRATIQUES-COL': 'Moniteur pratiques',
+      'PLANNING-ITEMS-TAB-PAN-HEADER': '',
+      'PLANNING-ITEMS-COL': 'Planning items'
+    },
+    'EDIT': {
+      'DIALOG_HEADER': 'Ecole',
+      'TAB-HEADER': 'Ecole',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK',
+      'VEHICULES-TAB-PAN-HEADER': '',
+      'ECOLE-LABEL': 'Ecole',
+      'ECOLE-PLACEHOLDER': 'Ecole',
+      'VEHICULES-COL': 'Vehicules',
+      'VEHICULES-COL': 'Vehicules',
+      'MONITEUR-THEORIQUES-TAB-PAN-HEADER': '',
+      'MONITEUR-THEORIQUES-COL': 'Moniteur theoriques',
+      'MONITEUR-PRATIQUES-TAB-PAN-HEADER': '',
+      'MONITEUR-PRATIQUES-COL': 'Moniteur pratiques',
+      'PLANNING-ITEMS-TAB-PAN-HEADER': '',
+      'PLANNING-ITEMS-COL': 'Planning items'
+    }
+  },
+  'Permis': {
+    'CREATE': {
+      'DIALOG_HEADER': 'Permis',
+      'TAB-HEADER': 'Permis',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    },
+    'EDIT': {
+      'DIALOG_HEADER': 'Permis',
+      'TAB-HEADER': 'Permis',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    }
+  },
+  'Marque': {
+    'CREATE': {
+      'DIALOG_HEADER': 'Marque',
+      'TAB-HEADER': 'Marque',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    },
+    'EDIT': {
+      'DIALOG_HEADER': 'Marque',
+      'TAB-HEADER': 'Marque',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    }
+  },
+  'Vehicule': {
+    'CREATE': {
+      'DIALOG_HEADER': 'Vehicule',
+      'TAB-HEADER': 'Vehicule',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    },
+    'EDIT': {
+      'DIALOG_HEADER': 'Vehicule',
+      'TAB-HEADER': 'Vehicule',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    }
+  },
+  'MoniteurPratique': {
+    'CREATE': {
+      'DIALOG_HEADER': 'Moniteur pratique',
+      'TAB-HEADER': 'Moniteur pratique',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    },
+    'EDIT': {
+      'DIALOG_HEADER': 'Moniteur pratique',
+      'TAB-HEADER': 'Moniteur pratique',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    }
+  },
+  'TypeVehicule': {
+    'CREATE': {
+      'DIALOG_HEADER': 'Type vehicule',
+      'TAB-HEADER': 'Type vehicule',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    },
+    'EDIT': {
+      'DIALOG_HEADER': 'Type vehicule',
+      'TAB-HEADER': 'Type vehicule',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    }
+  },
+  'TypeAvis': {
+    'CREATE': {
+      'DIALOG_HEADER': 'Type avis',
+      'TAB-HEADER': 'Type avis',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    },
+    'EDIT': {
+      'DIALOG_HEADER': 'Type avis',
+      'TAB-HEADER': 'Type avis',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    }
+  },
+  'Chercheur': {
+    'CREATE': {
+      'DIALOG_HEADER': 'Chercheur',
+      'TAB-HEADER': 'Chercheur',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    },
+    'EDIT': {
+      'DIALOG_HEADER': 'Chercheur',
+      'TAB-HEADER': 'Chercheur',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    }
+  },
+  'PlanningItem': {
+    'CREATE': {
+      'DIALOG_HEADER': 'Planning item',
+      'TAB-HEADER': 'Planning item',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    },
+    'EDIT': {
+      'DIALOG_HEADER': 'Planning item',
+      'TAB-HEADER': 'Planning item',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    }
+  },
+  'Gerant': {
+    'CREATE': {
+      'DIALOG_HEADER': 'Gerant',
+      'TAB-HEADER': 'Gerant',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    },
+    'EDIT': {
+      'DIALOG_HEADER': 'Gerant',
+      'TAB-HEADER': 'Gerant',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    }
+  },
+  'Ville': {
+    'CREATE': {
+      'DIALOG_HEADER': 'Ville',
+      'TAB-HEADER': 'Ville',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    },
+    'EDIT': {
+      'DIALOG_HEADER': 'Ville',
+      'TAB-HEADER': 'Ville',
+      'VALIDATE': 'OK',
+      'ACTION': 'Action',
+      'SAVE': 'OK'
+    }
+  }
+}

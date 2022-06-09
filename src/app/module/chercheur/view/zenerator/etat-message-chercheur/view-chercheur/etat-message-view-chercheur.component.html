@@ -1,0 +1,48 @@
+<p-dialog [(visible)]="viewEtatMessageDialog" [style]="{width: '70vw'}"
+          header="Etat message" [modal]="true"
+          styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Etat message">
+                <div class="p-grid">
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="1">Reference</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Reference" [(ngModel)]="selectedEtatMessage.reference"
+                               id="1" [(ngModel)]="selectedEtatMessage.reference"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="2">Libelle</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Libelle" [(ngModel)]="selectedEtatMessage.libelle"
+                               id="2" [(ngModel)]="selectedEtatMessage.libelle"
+                               autofocus>
+                    </div>
+
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+
+</p-dialog>
+
+
+

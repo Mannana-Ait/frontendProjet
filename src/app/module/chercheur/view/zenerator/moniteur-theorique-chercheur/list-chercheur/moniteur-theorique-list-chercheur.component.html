@@ -1,0 +1,327 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-toast></p-toast>
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                    <button pButton pRipple label="Nouveau" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                            (click)="openCreateMoniteurTheorique('moniteurTheorique')"></button>
+
+
+                    <button pButton pRipple label="Recherche"
+                            icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                            class="p-button-success p-mr-2 p-mb-2"
+                            (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <div class="flex">
+                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help"
+                                       [model]="excelPdfButons"></p-splitButton>
+                    </div>
+                </ng-template>
+
+            </p-toolbar>
+            <p-toolbar *ngIf="findByCriteriaShow">
+
+                <div class="align-form-search">
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="1"
+                                           type="text" [(ngModel)]="searchMoniteurTheorique.reference">
+                                    <label for="1">Reference</label>
+                                </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="2"
+                                           type="text" [(ngModel)]="searchMoniteurTheorique.nom">
+                                    <label for="2">Nom</label>
+                                </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="3"
+                                           type="text" [(ngModel)]="searchMoniteurTheorique.prenom">
+                                    <label for="3">Prenom</label>
+                                </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="4"
+                                           type="text" [(ngModel)]="searchMoniteurTheorique.email">
+                                    <label for="4">Email</label>
+                                </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="5"
+                                           type="text" [(ngModel)]="searchMoniteurTheorique.adress">
+                                    <label for="5">Adress</label>
+                                </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="6"
+                                           type="text" [(ngModel)]="searchMoniteurTheorique.phone">
+                                    <label for="6">Phone</label>
+                                </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="7"
+                                           type="text" [(ngModel)]="searchMoniteurTheorique.fix">
+                                    <label for="7">Fix</label>
+                                </span>
+
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchMoniteurTheorique.lieuNaissanceMin"
+                                    id="8-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="8-1">Lieu naissance Min</label>
+                        </span>
+
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchMoniteurTheorique.lieuNaissanceMax"
+                                    id="8-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="8-2">Lieu naissance Max</label>
+                        </span>
+
+
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchMoniteurTheorique.dateNaissanceMin"
+                                    id="9-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="9-1">Date naissance Min</label>
+                        </span>
+
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchMoniteurTheorique.dateNaissanceMax"
+                                    id="9-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="9-2">Date naissance Max</label>
+                        </span>
+
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="10"
+                                           type="text" [(ngModel)]="searchMoniteurTheorique.cin">
+                                    <label for="10">Cin</label>
+                                </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="genders" [(ngModel)]="searchMoniteurTheorique.genderVo"
+                                            id="11"
+                                            [filter]="true" [showClear]="true" placeholder="Gender"
+                                            optionLabel="libelle">
+                                </p-dropdown>
+                            </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="12"
+                                           type="text" [(ngModel)]="searchMoniteurTheorique.picture">
+                                    <label for="12">Picture</label>
+                                </span>
+                </div>
+
+                <div class="align-search-button">
+                    <button pButton pRipple label="Valider" icon="pi pi-sort-amount-down"
+                            class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                </div>
+            </p-toolbar>
+
+
+            <p-table #dt [value]="moniteurTheoriques" [columns]="cols" [rows]="4" [paginator]="true"
+                     [globalFilterFields]="['reference', 'nom', 'prenom', 'email', 'adress', 'phone', 'fix', 'lieuNaissance', 'dateNaissance', 'cin', 'genderVolibelle', 'picture']"
+                     [(selection)]="selectedMoniteurTheorique"
+                     [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                     currentPageReportTemplate="Les éléments de {first} à {last} sur {totalRecords}"
+                     [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Liste des moniteur theoriques</h5>
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Chercher..."
+                                   (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+
+
+                        <th pSortableColumn="reference">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Reference</span>
+                                <p-sortIcon field="reference"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <th pSortableColumn="nom">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Nom</span>
+                                <p-sortIcon field="nom"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <th pSortableColumn="prenom">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Prenom</span>
+                                <p-sortIcon field="prenom"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <th pSortableColumn="email">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Email</span>
+                                <p-sortIcon field="email"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <th pSortableColumn="adress">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Adress</span>
+                                <p-sortIcon field="adress"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <th pSortableColumn="phone">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Phone</span>
+                                <p-sortIcon field="phone"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <th pSortableColumn="fix">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Fix</span>
+                                <p-sortIcon field="fix"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <th pSortableColumn="lieuNaissance">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Lieu naissance</span>
+                                <p-sortIcon field="lieuNaissance"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <th pSortableColumn="dateNaissance">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Date naissance</span>
+                                <p-sortIcon field="dateNaissance"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <!--
+                        <th pSortableColumn="cin">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Cin</span>
+                                <p-sortIcon field="cin"></p-sortIcon>
+                            </div>
+                        </th>
+                        -->
+
+
+                        <!--
+                        <th pSortableColumn="gender">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Gender</span>
+                                <p-sortIcon field="gender"></p-sortIcon>
+                            </div>
+                        </th>
+                        -->
+
+
+                        <!--
+                        <th pSortableColumn="picture">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Picture</span>
+                                <p-sortIcon field="picture"></p-sortIcon>
+                            </div>
+                        </th>
+                        -->
+
+
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-moniteurTheorique>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="moniteurTheorique"></p-tableCheckbox>
+                        </td>
+
+                        <td>{{moniteurTheorique.reference}}</td>
+
+
+                        <td>{{moniteurTheorique.nom}}</td>
+
+
+                        <td>{{moniteurTheorique.prenom}}</td>
+
+
+                        <td>{{moniteurTheorique.email}}</td>
+
+
+                        <td>{{moniteurTheorique.adress}}</td>
+
+
+                        <td>{{moniteurTheorique.phone}}</td>
+
+
+                        <td>{{moniteurTheorique.fix}}</td>
+
+
+                        <td>{{moniteurTheorique.lieuNaissance | date:'dd-M-yyyy' }}</td>
+
+
+                        <!--
+                           <td>{{moniteurTheorique.dateNaissance | date:'dd-M-yyyy' }}</td>
+                        -->
+
+                        <!--
+                            <td>{{moniteurTheorique.cin}}</td>
+                        -->
+
+                        <!--
+                           <td>{{moniteurTheorique.genderVo?.libelle}}</td>
+                        -->
+
+                        <!--
+                            <td>{{moniteurTheorique.picture}}</td>
+                        -->
+
+
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil"
+                                    class="p-button-rounded p-button-success p-mr-2"
+                                    (click)="editMoniteurTheorique(moniteurTheorique)"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                    (click)="viewMoniteurTheorique(moniteurTheorique)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-mr-2"
+                                    (click)="deleteMoniteurTheorique(moniteurTheorique)"></button>
+
+                            <button pButton pRipple icon="pi pi-copy"
+                                    class="p-button-rounded p-button-raised p-button-warning"
+                                    (click)="duplicateMoniteurTheorique(moniteurTheorique)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En totale
+                        il {{moniteurTheoriques ? moniteurTheoriques.length == 1 ? 'y a' : 'y a' : 'y a' }} {{moniteurTheoriques ? moniteurTheoriques.length : 0 }} {{moniteurTheoriques ? moniteurTheoriques.length == 1 ? 'moniteur theorique' : 'moniteur theoriques' : 0 }}
+                        .
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-moniteur-theorique-create-chercheur></app-moniteur-theorique-create-chercheur>
+        <app-moniteur-theorique-edit-chercheur></app-moniteur-theorique-edit-chercheur>
+        <app-moniteur-theorique-view-chercheur></app-moniteur-theorique-view-chercheur>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

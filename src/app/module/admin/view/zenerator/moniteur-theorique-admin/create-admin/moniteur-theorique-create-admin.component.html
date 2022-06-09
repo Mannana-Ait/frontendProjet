@@ -1,0 +1,158 @@
+<p-dialog [(visible)]="createMoniteurTheoriqueDialog" [style]="{width: '70vw'}"
+          header="Moniteur theorique" [modal]="true"
+          styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Moniteur theorique">
+                <div class="p-grid">
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="1">Reference</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText
+                               placeholder="Reference"
+                               id="1" [(ngModel)]="selectedMoniteurTheorique.reference"
+                        />
+
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="2">Nom</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText
+                               placeholder="Nom"
+                               id="2" [(ngModel)]="selectedMoniteurTheorique.nom"
+                        />
+
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="3">Prenom</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText
+                               placeholder="Prenom"
+                               id="3" [(ngModel)]="selectedMoniteurTheorique.prenom"
+                        />
+
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="4">Email</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText
+                               placeholder="Email"
+                               id="4" [(ngModel)]="selectedMoniteurTheorique.email"
+                        />
+
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="5">Adress</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText
+                               placeholder="Adress"
+                               id="5" [(ngModel)]="selectedMoniteurTheorique.adress"
+                        />
+
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="6">Phone</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText
+                               placeholder="Phone"
+                               id="6" [(ngModel)]="selectedMoniteurTheorique.phone"
+                        />
+
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="7">Fix</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText
+                               placeholder="Fix"
+                               id="7" [(ngModel)]="selectedMoniteurTheorique.fix"
+                        />
+
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="8">Lieu naissance</label>
+                        <p-calendar id="8"
+                                    placeholder="Lieu naissance" [(ngModel)]="selectedMoniteurTheorique.lieuNaissance"
+                                    dateFormat="{{dateFormat}}">
+                        </p-calendar>
+
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="9">Date naissance</label>
+                        <p-calendar id="9"
+                                    placeholder="Date naissance" [(ngModel)]="selectedMoniteurTheorique.dateNaissance"
+                                    dateFormat="{{dateFormat}}">
+                        </p-calendar>
+
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="10">Cin</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText
+                               placeholder="Cin"
+                               id="10" [(ngModel)]="selectedMoniteurTheorique.cin"
+                        />
+
+                    </div>
+
+
+                    <div class="p-field p-col-11 p-md-2">
+                        <label for="11">Gender</label>
+                        <p-dropdown [options]="genders" [(ngModel)]="selectedMoniteurTheorique.genderVo"
+                                    id="11" [filter]="true" filterMatchMode="contains"
+                                    [showClear]="true"
+                                    optionLabel="libelle"
+                                    placeholder="Gender">
+                        </p-dropdown>
+
+                    </div>
+                    <div class="p-col-1">
+                        <label></label>
+                        <button pButton pRipple type="button"
+                                icon="pi pi-plus" (click)="openCreategender('gender')"
+                                class="p-button-success one-colonne-btn-success-align"></button>
+                    </div>
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="12">Picture</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText
+                               placeholder="Picture"
+                               id="12" [(ngModel)]="selectedMoniteurTheorique.picture"
+                        />
+
+                    </div>
+
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideCreateDialog()"></button>
+            </div>
+            <div>
+                <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px"
+                        (click)="save()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+    <app-gender-create-admin></app-gender-create-admin>
+
+
+</p-dialog>

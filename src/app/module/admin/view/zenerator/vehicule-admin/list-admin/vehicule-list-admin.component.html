@@ -1,0 +1,212 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-toast></p-toast>
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                    <button pButton pRipple label="Nouveau" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                            (click)="openCreateVehicule('vehicule')"></button>
+
+
+                    <button pButton pRipple label="Recherche"
+                            icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                            class="p-button-success p-mr-2 p-mb-2"
+                            (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <div class="flex">
+                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help"
+                                       [model]="excelPdfButons"></p-splitButton>
+                    </div>
+                </ng-template>
+
+            </p-toolbar>
+            <p-toolbar *ngIf="findByCriteriaShow">
+
+                <div class="align-form-search">
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="1"
+                                           type="text" [(ngModel)]="searchVehicule.matricule">
+                                    <label for="1">Matricule</label>
+                                </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="marques" [(ngModel)]="searchVehicule.marqueVo"
+                                            id="2"
+                                            [filter]="true" [showClear]="true" placeholder="Marque"
+                                            optionLabel="libelle">
+                                </p-dropdown>
+                            </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="typeVehicules" [(ngModel)]="searchVehicule.typeVehiculeVo"
+                                            id="3"
+                                            [filter]="true" [showClear]="true" placeholder="Type vehicule"
+                                            optionLabel="reference">
+                                </p-dropdown>
+                            </span>
+
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchVehicule.dateAchatVehiculeMin"
+                                    id="4-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="4-1">Date achat vehicule Min</label>
+                        </span>
+
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchVehicule.dateAchatVehiculeMax"
+                                    id="4-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="4-2">Date achat vehicule Max</label>
+                        </span>
+
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="5"
+                                           type="text" [(ngModel)]="searchVehicule.imageUrl">
+                                    <label for="5">Image url</label>
+                                </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="ecoles" [(ngModel)]="searchVehicule.ecoleVo"
+                                            id="6"
+                                            [filter]="true" [showClear]="true" placeholder="Ecole"
+                                            optionLabel="reference">
+                                </p-dropdown>
+                            </span>
+                </div>
+
+                <div class="align-search-button">
+                    <button pButton pRipple label="Valider" icon="pi pi-sort-amount-down"
+                            class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                </div>
+            </p-toolbar>
+
+
+            <p-table #dt [value]="vehicules" [columns]="cols" [rows]="4" [paginator]="true"
+                     [globalFilterFields]="['matricule', 'marqueVolibelle', 'typeVehiculeVoreference', 'dateAchatVehicule', 'imageUrl', 'ecoleVoreference']"
+                     [(selection)]="selectedVehicule"
+                     [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                     currentPageReportTemplate="Les éléments de {first} à {last} sur {totalRecords}"
+                     [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Liste des vehicules</h5>
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Chercher..."
+                                   (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+
+
+                        <th pSortableColumn="matricule">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Matricule</span>
+                                <p-sortIcon field="matricule"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <th pSortableColumn="marque">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Marque</span>
+                                <p-sortIcon field="marque"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <th pSortableColumn="typeVehicule">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Type vehicule</span>
+                                <p-sortIcon field="typeVehicule"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <th pSortableColumn="dateAchatVehicule">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Date achat vehicule</span>
+                                <p-sortIcon field="dateAchatVehicule"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <th pSortableColumn="imageUrl">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Image url</span>
+                                <p-sortIcon field="imageUrl"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <th pSortableColumn="ecole">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Ecole</span>
+                                <p-sortIcon field="ecole"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-vehicule>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="vehicule"></p-tableCheckbox>
+                        </td>
+
+                        <td>{{vehicule.matricule}}</td>
+
+
+                        <td>{{vehicule.marqueVo?.libelle}}</td>
+
+
+                        <td>{{vehicule.typeVehiculeVo?.reference}}</td>
+
+
+                        <td>{{vehicule.dateAchatVehicule | date:'dd-M-yyyy' }}</td>
+
+
+                        <td>{{vehicule.imageUrl}}</td>
+
+
+                        <td>{{vehicule.ecoleVo?.reference}}</td>
+
+
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil"
+                                    class="p-button-rounded p-button-success p-mr-2"
+                                    (click)="editVehicule(vehicule)"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                    (click)="viewVehicule(vehicule)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-mr-2"
+                                    (click)="deleteVehicule(vehicule)"></button>
+
+                            <button pButton pRipple icon="pi pi-copy"
+                                    class="p-button-rounded p-button-raised p-button-warning"
+                                    (click)="duplicateVehicule(vehicule)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En totale
+                        il {{vehicules ? vehicules.length == 1 ? 'y a' : 'y a' : 'y a' }} {{vehicules ? vehicules.length : 0 }} {{vehicules ? vehicules.length == 1 ? 'vehicule' : 'vehicules' : 0 }}
+                        .
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-vehicule-create-admin></app-vehicule-create-admin>
+        <app-vehicule-edit-admin></app-vehicule-edit-admin>
+        <app-vehicule-view-admin></app-vehicule-view-admin>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

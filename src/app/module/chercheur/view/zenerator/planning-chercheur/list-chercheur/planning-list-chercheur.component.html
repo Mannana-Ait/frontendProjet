@@ -1,0 +1,197 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-toast></p-toast>
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                                            <button pButton pRipple label="Nouveau" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                                (click)="openCreatePlanning('planning')"></button>
+
+
+                    <button pButton pRipple label="Recherche"
+                            icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                            class="p-button-success p-mr-2 p-mb-2"
+                            (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <div class="flex">
+                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
+                    </div>
+                </ng-template>
+
+            </p-toolbar>
+            <p-toolbar *ngIf="findByCriteriaShow">
+
+                <div class="align-form-search">
+                            <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="jours" [(ngModel)]="searchPlanning.jourVo"
+                                        id="1"
+                                        [filter]="true" [showClear]="true"  placeholder="Jour"
+                                        optionLabel="libelle">
+                                </p-dropdown>
+                            </span>
+
+                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchPlanning.dateOuvertureMin"
+                                    id="2-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="2-1">Date ouverture Min</label>
+                        </span>
+
+                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchPlanning.dateOuvertureMax"
+                                    id="2-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="2-2">Date ouverture Max</label>
+                        </span>
+
+
+                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchPlanning.dateFermetureMin"
+                                    id="3-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="3-1">Date fermeture Min</label>
+                        </span>
+
+                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchPlanning.dateFermetureMax"
+                                    id="3-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="3-2">Date fermeture Max</label>
+                        </span>
+
+                            <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="ecoles" [(ngModel)]="searchPlanning.ecoleVo"
+                                        id="4"
+                                        [filter]="true" [showClear]="true"  placeholder="Ecole"
+                                        optionLabel="reference">
+                                </p-dropdown>
+                            </span>
+                </div>
+
+                <div class="align-search-button">
+                    <button pButton pRipple label="Valider" icon="pi pi-sort-amount-down"
+                            class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                </div>
+            </p-toolbar>
+
+
+            <p-table #dt [value]="plannings" [columns]="cols" [rows]="4" [paginator]="true"
+                    [globalFilterFields]="['jourVolibelle', 'dateOuverture', 'dateFermeture', 'ecoleVoreference']" [(selection)]="selectedPlanning"
+                    [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                      currentPageReportTemplate="Les éléments de {first} à {last} sur {totalRecords}"
+                    [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Liste des plannings</h5>
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Chercher..." (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+
+                                
+                                <th pSortableColumn="jour">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Jour</span>
+                                        <p-sortIcon field="jour"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="dateOuverture">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Date ouverture</span>
+                                        <p-sortIcon field="dateOuverture"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="dateFermeture">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Date fermeture</span>
+                                        <p-sortIcon field="dateFermeture"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="ecole">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Ecole</span>
+                                        <p-sortIcon field="ecole"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-planning>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="planning"></p-tableCheckbox>
+                        </td>
+                            
+                                <td>{{planning.jourVo?.libelle}}</td>
+                            
+
+                            
+                                <td>{{planning.dateOuverture | date:'dd-M-yyyy' }}</td>
+                            
+
+                            
+                                <td>{{planning.dateFermeture | date:'dd-M-yyyy' }}</td>
+                            
+
+                            
+                                <td>{{planning.ecoleVo?.reference}}</td>
+                            
+
+
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil"
+                                    class="p-button-rounded p-button-success p-mr-2"
+                                    (click)="editPlanning(planning)"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                    (click)="viewPlanning(planning)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-mr-2"
+                                    (click)="deletePlanning(planning)"></button>
+
+                            <button pButton pRipple icon="pi pi-copy" class="p-button-rounded p-button-raised p-button-warning"
+                                    (click)="duplicatePlanning(planning)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En totale
+                        il {{plannings ? plannings.length == 1 ? 'y a' : 'y a' : 'y a' }} {{plannings ? plannings.length : 0 }} {{plannings ? plannings.length == 1 ? 'planning' : 'plannings' : 0 }}
+                        .
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-planning-create-chercheur></app-planning-create-chercheur>
+        <app-planning-edit-chercheur></app-planning-edit-chercheur>
+        <app-planning-view-chercheur></app-planning-view-chercheur>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

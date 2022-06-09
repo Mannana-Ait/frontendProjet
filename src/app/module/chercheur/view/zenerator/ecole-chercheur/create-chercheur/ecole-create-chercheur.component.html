@@ -1,0 +1,728 @@
+<p-dialog [(visible)]="createEcoleDialog" [style]="{width: '70vw'}"
+          header="Ecole" [modal]="true"
+          styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Ecole">
+                <div class="p-grid">
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="1">Reference</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText
+                               placeholder="Reference"
+                               id="1" [(ngModel)]="selectedEcole.reference"
+                        />
+
+                    </div>
+
+
+                    <div class="p-field p-col-11 p-md-2">
+                        <label for="2">Ville</label>
+                        <p-dropdown [options]="villes" [(ngModel)]="selectedEcole.villeVo"
+                                    id="2" [filter]="true" filterMatchMode="contains"
+                                    [showClear]="true"
+                                    optionLabel="libelle"
+                                    placeholder="Ville">
+                        </p-dropdown>
+
+                    </div>
+                    <div class="p-col-1">
+                        <label></label>
+                        <button pButton pRipple type="button"
+                                icon="pi pi-plus" (click)="openCreateville('ville')"
+                                class="p-button-success one-colonne-btn-success-align"></button>
+                    </div>
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="3">Altitude</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2" id="3"
+                                       placeholder="Altitude"
+                                       [(ngModel)]="selectedEcole.altitude">
+                        </p-inputNumber>
+
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="4">Angitude</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2" id="4"
+                                       placeholder="Angitude"
+                                       [(ngModel)]="selectedEcole.angitude">
+                        </p-inputNumber>
+
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="5">Nom</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText
+                               placeholder="Nom"
+                               id="5" [(ngModel)]="selectedEcole.nom"
+                        />
+
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="6">Address</label>
+                        <textarea id="6" pInputTextarea rows="5" cols="30"
+                                  placeholder="Address" [(ngModel)]="selectedEcole.address"
+                        ></textarea>
+
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="7">Num autorisation</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText
+                               placeholder="Num autorisation"
+                               id="7" [(ngModel)]="selectedEcole.numAutorisation"
+                        />
+
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="8">Num fix</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText
+                               placeholder="Num fix"
+                               id="8" [(ngModel)]="selectedEcole.numFix"
+                        />
+
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="9">Num phone</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText
+                               placeholder="Num phone"
+                               id="9" [(ngModel)]="selectedEcole.numPhone"
+                        />
+
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="10">Email</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText
+                               placeholder="Email"
+                               id="10" [(ngModel)]="selectedEcole.email"
+                        />
+
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="11">Taux reussite</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2" id="11"
+                                       placeholder="Taux reussite"
+                                       [(ngModel)]="selectedEcole.tauxReussite">
+                        </p-inputNumber>
+
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="12">Date creation</label>
+                        <p-calendar id="12"
+                                    placeholder="Date creation" [(ngModel)]="selectedEcole.dateCreation"
+                                    dateFormat="{{dateFormat}}">
+                        </p-calendar>
+
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="13">Date abonnement</label>
+                        <p-calendar id="13"
+                                    placeholder="Date abonnement" [(ngModel)]="selectedEcole.dateAbonnement"
+                                    dateFormat="{{dateFormat}}">
+                        </p-calendar>
+
+                    </div>
+
+                    <div class="p-field p-col-11 p-md-2">
+                        <label for="14">Gerant</label>
+                        <p-dropdown [options]="gerants" [(ngModel)]="selectedEcole.gerantVo"
+                                    id="14" [filter]="true" filterMatchMode="contains"
+                                    [showClear]="true"
+                                    optionLabel="reference"
+                                    placeholder="Gerant">
+                        </p-dropdown>
+
+                    </div>
+                    <div class="p-col-1">
+                        <label></label>
+                        <button pButton pRipple type="button"
+                                icon="pi pi-plus" (click)="openCreategerant('gerant')"
+                                class="p-button-success one-colonne-btn-success-align"></button>
+                    </div>
+                </div>
+            </p-tabPanel>
+            <p-tabPanel header="Vehicules">
+                <p-tabView>
+                    <p-tabPanel header="Création">
+                        <div class="p-grid">
+                            <div class="p-field p-col-12 p-md-4">
+                                <label for="1">Matricule</label>
+                                <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                       placeholder="Matricule"
+                                       id="1" [(ngModel)]="selectedVehicules.matricule"
+                                       autofocus>
+
+                            </div>
+                            <div class="p-field p-col-11 p-md-3">
+                                <label>Marque</label>
+                                <p-dropdown [options]="marques" [(ngModel)]="selectedVehicules.marqueVo"
+                                            id="2" [filter]="true"
+                                            filterMatchMode="contains" [showClear]="true"
+                                            optionLabel="libelle"
+                                            placeholder="Marque"
+                                >
+                                </p-dropdown>
+
+                            </div>
+                            <div class="p-col-1">
+                                <label></label>
+                                <button pButton pRipple type="button"
+                                        icon="pi pi-plus" (click)="openCreatemarque('marque')"
+                                        class="p-button-success one-colonne-btn-success-align"></button>
+                            </div>
+
+                            <div class="p-field p-col-11 p-md-3">
+                                <label>Type vehicule</label>
+                                <p-dropdown [options]="typeVehicules" [(ngModel)]="selectedVehicules.typeVehiculeVo"
+                                            id="3" [filter]="true"
+                                            filterMatchMode="contains" [showClear]="true"
+                                            optionLabel="reference"
+                                            placeholder="Type vehicule"
+                                >
+                                </p-dropdown>
+
+                            </div>
+                            <div class="p-col-1">
+                                <label></label>
+                                <button pButton pRipple type="button"
+                                        icon="pi pi-plus" (click)="openCreatetypeVehicule('typeVehicule')"
+                                        class="p-button-success one-colonne-btn-success-align"></button>
+                            </div>
+
+                            <div class="p-field p-col-12 p-md-4">
+                                <label for="4">Date achat vehicule</label>
+                                <p-calendar id="4"
+                                            placeholder="Date achat vehicule"
+                                            [(ngModel)]="selectedVehicules.dateAchatVehicule"
+                                            dateFormat="{{dateFormat}}" [showIcon]="true"></p-calendar>
+
+                            </div>
+                            <div class="p-field p-col-12 p-md-4">
+                                <label for="5">Image url</label>
+                                <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                       placeholder="Image url"
+                                       id="5" [(ngModel)]="selectedVehicules.imageUrl"
+                                       autofocus>
+
+                            </div>
+                            <div class="p-field p-col-12 p-md-1">
+                                <button pButton pRipple type="button" icon="pi pi-plus" class="p-mt-4"
+                                        label="OK" (click)="addVehicules()">
+                                </button>
+                            </div>
+
+                        </div>
+                    </p-tabPanel>
+                    <p-tabPanel header="Liste">
+                        <div class="card">
+                            <p-table [value]="selectedEcole.vehiculesVo" [scrollable]="true"
+                                     scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>Matricule</th>
+                                        <th>Marque</th>
+                                        <th>Type vehicule</th>
+                                        <th>Date achat vehicule</th>
+                                        <th>Image url</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                        <td>{{p.matricule}}</td>
+
+                                        <td>{{p.marqueVo?.libelle}}</td>
+                                        <td>{{p.typeVehiculeVo?.reference}}</td>
+                                        <td>{{p.dateAchatVehicule | date: dateFormatColumn}}</td>
+
+                                        <td>{{p.imageUrl}}</td>
+
+                                        <td>
+                                            <button (click)="deleteVehicules(p)" pButton type="button"
+                                                    icon="pi pi-times" class="p-button-rounded p-button-danger">
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+
+                    </p-tabPanel>
+                </p-tabView>
+            </p-tabPanel>
+
+            <p-tabPanel header="Moniteur theoriques">
+                <p-tabView>
+                    <p-tabPanel header="Création">
+                        <div class="p-grid">
+                            <div class="p-field p-col-12 p-md-4">
+                                <label for="1">Reference</label>
+                                <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                       placeholder="Reference"
+                                       id="1" [(ngModel)]="selectedMoniteurTheoriques.reference"
+                                       autofocus>
+
+                            </div>
+                            <div class="p-field p-col-12 p-md-4">
+                                <label for="2">Nom</label>
+                                <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                       placeholder="Nom"
+                                       id="2" [(ngModel)]="selectedMoniteurTheoriques.nom"
+                                       autofocus>
+
+                            </div>
+                            <div class="p-field p-col-12 p-md-4">
+                                <label for="3">Prenom</label>
+                                <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                       placeholder="Prenom"
+                                       id="3" [(ngModel)]="selectedMoniteurTheoriques.prenom"
+                                       autofocus>
+
+                            </div>
+                            <div class="p-field p-col-12 p-md-4">
+                                <label for="4">Email</label>
+                                <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                       placeholder="Email"
+                                       id="4" [(ngModel)]="selectedMoniteurTheoriques.email"
+                                       autofocus>
+
+                            </div>
+                            <div class="p-field p-col-12 p-md-4">
+                                <label for="5">Adress</label>
+                                <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                       placeholder="Adress"
+                                       id="5" [(ngModel)]="selectedMoniteurTheoriques.adress"
+                                       autofocus>
+
+                            </div>
+                            <div class="p-field p-col-12 p-md-4">
+                                <label for="6">Phone</label>
+                                <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                       placeholder="Phone"
+                                       id="6" [(ngModel)]="selectedMoniteurTheoriques.phone"
+                                       autofocus>
+
+                            </div>
+                            <div class="p-field p-col-12 p-md-4">
+                                <label for="7">Fix</label>
+                                <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                       placeholder="Fix"
+                                       id="7" [(ngModel)]="selectedMoniteurTheoriques.fix"
+                                       autofocus>
+
+                            </div>
+                            <div class="p-field p-col-12 p-md-4">
+                                <label for="8">Lieu naissance</label>
+                                <p-calendar id="8"
+                                            placeholder="Lieu naissance"
+                                            [(ngModel)]="selectedMoniteurTheoriques.lieuNaissance"
+                                            dateFormat="{{dateFormat}}" [showIcon]="true"></p-calendar>
+
+                            </div>
+                            <div class="p-field p-col-12 p-md-4">
+                                <label for="9">Date naissance</label>
+                                <p-calendar id="9"
+                                            placeholder="Date naissance"
+                                            [(ngModel)]="selectedMoniteurTheoriques.dateNaissance"
+                                            dateFormat="{{dateFormat}}" [showIcon]="true"></p-calendar>
+
+                            </div>
+                            <div class="p-field p-col-12 p-md-4">
+                                <label for="10">Cin</label>
+                                <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                       placeholder="Cin"
+                                       id="10" [(ngModel)]="selectedMoniteurTheoriques.cin"
+                                       autofocus>
+
+                            </div>
+                            <div class="p-field p-col-11 p-md-3">
+                                <label>Gender</label>
+                                <p-dropdown [options]="genders" [(ngModel)]="selectedMoniteurTheoriques.genderVo"
+                                            id="11" [filter]="true"
+                                            filterMatchMode="contains" [showClear]="true"
+                                            optionLabel="libelle"
+                                            placeholder="Gender"
+                                >
+                                </p-dropdown>
+
+                            </div>
+                            <div class="p-col-1">
+                                <label></label>
+                                <button pButton pRipple type="button"
+                                        icon="pi pi-plus" (click)="openCreategender('gender')"
+                                        class="p-button-success one-colonne-btn-success-align"></button>
+                            </div>
+
+                            <div class="p-field p-col-12 p-md-4">
+                                <label for="12">Picture</label>
+                                <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                       placeholder="Picture"
+                                       id="12" [(ngModel)]="selectedMoniteurTheoriques.picture"
+                                       autofocus>
+
+                            </div>
+                            <div class="p-field p-col-12 p-md-1">
+                                <button pButton pRipple type="button" icon="pi pi-plus" class="p-mt-4"
+                                        label="OK" (click)="addMoniteurTheoriques()">
+                                </button>
+                            </div>
+
+                        </div>
+                    </p-tabPanel>
+                    <p-tabPanel header="Liste">
+                        <div class="card">
+                            <p-table [value]="selectedEcole.moniteurTheoriquesVo" [scrollable]="true"
+                                     scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>Reference</th>
+                                        <th>Nom</th>
+                                        <th>Prenom</th>
+                                        <th>Email</th>
+                                        <th>Adress</th>
+                                        <th>Phone</th>
+                                        <th>Fix</th>
+                                        <th>Lieu naissance</th>
+                                        <th>Date naissance</th>
+                                        <th>Cin</th>
+                                        <th>Gender</th>
+                                        <th>Picture</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                        <td>{{p.reference}}</td>
+
+                                        <td>{{p.nom}}</td>
+
+                                        <td>{{p.prenom}}</td>
+
+                                        <td>{{p.email}}</td>
+
+                                        <td>{{p.adress}}</td>
+
+                                        <td>{{p.phone}}</td>
+
+                                        <td>{{p.fix}}</td>
+
+                                        <td>{{p.lieuNaissance | date: dateFormatColumn}}</td>
+
+                                        <td>{{p.dateNaissance | date: dateFormatColumn}}</td>
+
+                                        <td>{{p.cin}}</td>
+
+                                        <td>{{p.genderVo?.libelle}}</td>
+                                        <td>{{p.picture}}</td>
+
+                                        <td>
+                                            <button (click)="deleteMoniteurTheoriques(p)" pButton type="button"
+                                                    icon="pi pi-times" class="p-button-rounded p-button-danger">
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+
+                    </p-tabPanel>
+                </p-tabView>
+            </p-tabPanel>
+
+            <p-tabPanel header="Moniteur pratiques">
+                <p-tabView>
+                    <p-tabPanel header="Création">
+                        <div class="p-grid">
+                            <div class="p-field p-col-12 p-md-4">
+                                <label for="1">Reference</label>
+                                <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                       placeholder="Reference"
+                                       id="1" [(ngModel)]="selectedMoniteurPratiques.reference"
+                                       autofocus>
+
+                            </div>
+                            <div class="p-field p-col-12 p-md-4">
+                                <label for="2">Nom</label>
+                                <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                       placeholder="Nom"
+                                       id="2" [(ngModel)]="selectedMoniteurPratiques.nom"
+                                       autofocus>
+
+                            </div>
+                            <div class="p-field p-col-12 p-md-4">
+                                <label for="3">Prenom</label>
+                                <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                       placeholder="Prenom"
+                                       id="3" [(ngModel)]="selectedMoniteurPratiques.prenom"
+                                       autofocus>
+
+                            </div>
+                            <div class="p-field p-col-12 p-md-4">
+                                <label for="4">Email</label>
+                                <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                       placeholder="Email"
+                                       id="4" [(ngModel)]="selectedMoniteurPratiques.email"
+                                       autofocus>
+
+                            </div>
+                            <div class="p-field p-col-12 p-md-4">
+                                <label for="5">Adress</label>
+                                <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                       placeholder="Adress"
+                                       id="5" [(ngModel)]="selectedMoniteurPratiques.adress"
+                                       autofocus>
+
+                            </div>
+                            <div class="p-field p-col-12 p-md-4">
+                                <label for="6">Phone</label>
+                                <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                       placeholder="Phone"
+                                       id="6" [(ngModel)]="selectedMoniteurPratiques.phone"
+                                       autofocus>
+
+                            </div>
+                            <div class="p-field p-col-12 p-md-4">
+                                <label for="7">Fix</label>
+                                <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                       placeholder="Fix"
+                                       id="7" [(ngModel)]="selectedMoniteurPratiques.fix"
+                                       autofocus>
+
+                            </div>
+                            <div class="p-field p-col-12 p-md-4">
+                                <label for="8">Lieu naissance</label>
+                                <p-calendar id="8"
+                                            placeholder="Lieu naissance"
+                                            [(ngModel)]="selectedMoniteurPratiques.lieuNaissance"
+                                            dateFormat="{{dateFormat}}" [showIcon]="true"></p-calendar>
+
+                            </div>
+                            <div class="p-field p-col-12 p-md-4">
+                                <label for="9">Date naissance</label>
+                                <p-calendar id="9"
+                                            placeholder="Date naissance"
+                                            [(ngModel)]="selectedMoniteurPratiques.dateNaissance"
+                                            dateFormat="{{dateFormat}}" [showIcon]="true"></p-calendar>
+
+                            </div>
+                            <div class="p-field p-col-12 p-md-4">
+                                <label for="10">Cin</label>
+                                <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                       placeholder="Cin"
+                                       id="10" [(ngModel)]="selectedMoniteurPratiques.cin"
+                                       autofocus>
+
+                            </div>
+                            <div class="p-field p-col-11 p-md-3">
+                                <label>Gender</label>
+                                <p-dropdown [options]="genders" [(ngModel)]="selectedMoniteurPratiques.genderVo"
+                                            id="11" [filter]="true"
+                                            filterMatchMode="contains" [showClear]="true"
+                                            optionLabel="libelle"
+                                            placeholder="Gender"
+                                >
+                                </p-dropdown>
+
+                            </div>
+                            <div class="p-col-1">
+                                <label></label>
+                                <button pButton pRipple type="button"
+                                        icon="pi pi-plus" (click)="openCreategender('gender')"
+                                        class="p-button-success one-colonne-btn-success-align"></button>
+                            </div>
+
+                            <div class="p-field p-col-12 p-md-4">
+                                <label for="12">Picture</label>
+                                <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                       placeholder="Picture"
+                                       id="12" [(ngModel)]="selectedMoniteurPratiques.picture"
+                                       autofocus>
+
+                            </div>
+                            <div class="p-field p-col-12 p-md-1">
+                                <button pButton pRipple type="button" icon="pi pi-plus" class="p-mt-4"
+                                        label="OK" (click)="addMoniteurPratiques()">
+                                </button>
+                            </div>
+
+                        </div>
+                    </p-tabPanel>
+                    <p-tabPanel header="Liste">
+                        <div class="card">
+                            <p-table [value]="selectedEcole.moniteurPratiquesVo" [scrollable]="true"
+                                     scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>Reference</th>
+                                        <th>Nom</th>
+                                        <th>Prenom</th>
+                                        <th>Email</th>
+                                        <th>Adress</th>
+                                        <th>Phone</th>
+                                        <th>Fix</th>
+                                        <th>Lieu naissance</th>
+                                        <th>Date naissance</th>
+                                        <th>Cin</th>
+                                        <th>Gender</th>
+                                        <th>Picture</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                        <td>{{p.reference}}</td>
+
+                                        <td>{{p.nom}}</td>
+
+                                        <td>{{p.prenom}}</td>
+
+                                        <td>{{p.email}}</td>
+
+                                        <td>{{p.adress}}</td>
+
+                                        <td>{{p.phone}}</td>
+
+                                        <td>{{p.fix}}</td>
+
+                                        <td>{{p.lieuNaissance | date: dateFormatColumn}}</td>
+
+                                        <td>{{p.dateNaissance | date: dateFormatColumn}}</td>
+
+                                        <td>{{p.cin}}</td>
+
+                                        <td>{{p.genderVo?.libelle}}</td>
+                                        <td>{{p.picture}}</td>
+
+                                        <td>
+                                            <button (click)="deleteMoniteurPratiques(p)" pButton type="button"
+                                                    icon="pi pi-times" class="p-button-rounded p-button-danger">
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+
+                    </p-tabPanel>
+                </p-tabView>
+            </p-tabPanel>
+
+            <p-tabPanel header="Planning items">
+                <div class="p-col">
+                    <div class="p-grid">
+                        <div class="p-field p-col-11 p-md-5">
+                            <label>Jour</label>
+                            <p-dropdown [options]="jours" [(ngModel)]="selectedPlanningItems.jourVo"
+                                        id="1" [filter]="true"
+                                        filterMatchMode="contains" [showClear]="true"
+                                        optionLabel="libelle"
+                                        placeholder="Jour"
+                            >
+                            </p-dropdown>
+
+                        </div>
+                        <div class="p-col-1">
+                            <label></label>
+                            <button pButton pRipple type="button"
+                                    icon="pi pi-plus" (click)="openCreatejour('jour')"
+                                    class="p-button-success one-colonne-btn-success-align"></button>
+                        </div>
+
+                        <div class="p-field p-col-12 p-md-6">
+                            <label for="2">Date ouverture</label>
+                            <p-calendar id="2"
+                                        placeholder="Date ouverture"
+                                        [(ngModel)]="selectedPlanningItems.dateOuverture"
+                                        dateFormat="{{dateFormat}}" [showIcon]="true"></p-calendar>
+
+                        </div>
+                        <div class="p-field p-col-12 p-md-6">
+                            <label for="3">Date fermeture</label>
+                            <p-calendar id="3"
+                                        placeholder="Date fermeture"
+                                        [(ngModel)]="selectedPlanningItems.dateFermeture"
+                                        dateFormat="{{dateFormat}}" [showIcon]="true"></p-calendar>
+
+                        </div>
+                        <div class="p-field p-col-12 p-md-1">
+                            <button pButton pRipple type="button" icon="pi pi-plus" class="p-mt-4"
+                                    label="OK" (click)="addPlanningItems()">
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="p-col">
+                    <div class="card">
+                        <p-table [value]="selectedEcole.planningItemsVo" [scrollable]="true"
+                                 scrollHeight="200px">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th>Jour</th>
+                                    <th>Date ouverture</th>
+                                    <th>Date fermeture</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-p>
+                                <tr>
+                                    <td>{{p.jourVo?.libelle}}</td>
+                                    <td>{{p.dateOuverture | date: dateFormatColumn}}</td>
+
+                                    <td>{{p.dateFermeture | date: dateFormatColumn}}</td>
+
+                                    <td>
+                                        <button (click)="deletePlanningItems(p)" pButton type="button"
+                                                icon="pi pi-times" class="p-button-rounded p-button-danger">
+                                        </button>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+
+                </div>
+            </p-tabPanel>
+
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideCreateDialog()"></button>
+            </div>
+            <div>
+                <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px"
+                        (click)="save()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+    <app-ville-create-chercheur></app-ville-create-chercheur>
+    <app-gerant-create-chercheur></app-gerant-create-chercheur>
+
+    <app-marque-create-chercheur></app-marque-create-chercheur>
+    <app-type-vehicule-create-chercheur></app-type-vehicule-create-chercheur>
+    <app-gender-create-chercheur></app-gender-create-chercheur>
+    <app-gender-create-chercheur></app-gender-create-chercheur>
+    <app-jour-create-chercheur></app-jour-create-chercheur>
+
+</p-dialog>

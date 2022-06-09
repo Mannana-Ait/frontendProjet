@@ -1,0 +1,340 @@
+<p-dialog [(visible)]="viewEcoleDialog" [style]="{width: '70vw'}"
+          header="Ecole" [modal]="true"
+          styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Ecole">
+                <div class="p-grid">
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="1">Reference</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Reference" [(ngModel)]="selectedEcole.reference"
+                               id="1" [(ngModel)]="selectedEcole.reference"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="2">Ville</label>
+                        <p-dropdown [options]="villes" [(ngModel)]="selectedEcole.villeVo"
+                                    id="2" [filter]="true" filterMatchMode="contains"
+                                    [showClear]="true" [disabled]="true"
+                                    optionLabel="libelle"
+                                    placeholder="Ville">
+                        </p-dropdown>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="3">Altitude</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2" id="3" [disabled]="true"
+                                       placeholder="Altitude" [(ngModel)]="selectedEcole.altitude"
+                                       [(ngModel)]="selectedEcole.altitude"></p-inputNumber>
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="4">Angitude</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2" id="4" [disabled]="true"
+                                       placeholder="Angitude" [(ngModel)]="selectedEcole.angitude"
+                                       [(ngModel)]="selectedEcole.angitude"></p-inputNumber>
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="5">Nom</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Nom" [(ngModel)]="selectedEcole.nom"
+                               id="5" [(ngModel)]="selectedEcole.nom"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="6">Address</label>
+                        <textarea id="6" pInputTextarea rows="5" cols="30" [disabled]="true"
+                                  placeholder="Address" [(ngModel)]="selectedEcole.address"
+                        ></textarea>
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="7">Num autorisation</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Num autorisation" [(ngModel)]="selectedEcole.numAutorisation"
+                               id="7" [(ngModel)]="selectedEcole.numAutorisation"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="8">Num fix</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Num fix" [(ngModel)]="selectedEcole.numFix"
+                               id="8" [(ngModel)]="selectedEcole.numFix"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="9">Num phone</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Num phone" [(ngModel)]="selectedEcole.numPhone"
+                               id="9" [(ngModel)]="selectedEcole.numPhone"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="10">Email</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Email" [(ngModel)]="selectedEcole.email"
+                               id="10" [(ngModel)]="selectedEcole.email"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="11">Taux reussite</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2" id="11" [disabled]="true"
+                                       placeholder="Taux reussite" [(ngModel)]="selectedEcole.tauxReussite"
+                                       [(ngModel)]="selectedEcole.tauxReussite"></p-inputNumber>
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="12">Date creation</label>
+                        <p-calendar id="12" [disabled]="true"
+                                    placeholder="Date creation" [(ngModel)]="selectedEcole.dateCreation"
+                                    dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="13">Date abonnement</label>
+                        <p-calendar id="13" [disabled]="true"
+                                    placeholder="Date abonnement" [(ngModel)]="selectedEcole.dateAbonnement"
+                                    dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="14">Gerant</label>
+                        <p-dropdown [options]="gerants" [(ngModel)]="selectedEcole.gerantVo"
+                                    id="14" [filter]="true" filterMatchMode="contains"
+                                    [showClear]="true" [disabled]="true"
+                                    optionLabel="reference"
+                                    placeholder="Gerant">
+                        </p-dropdown>
+                    </div>
+
+
+                </div>
+            </p-tabPanel>
+            <p-tabPanel header="Vehicules">
+                <div class="p-grid">
+
+                    <div class="p-col">
+                        <div class="card">
+                            <p-table [value]="selectedEcole.vehiculesVo" [scrollable]="true"
+                                     scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>Matricule</th>
+                                        <th>Marque</th>
+                                        <th>Type vehicule</th>
+                                        <th>Date achat vehicule</th>
+                                        <th>Image url</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                        <td>{{p.matricule}}</td>
+
+                                        <td>{{p.marqueVo?.libelle}}</td>
+                                        <td>{{p.typeVehiculeVo?.reference}}</td>
+                                        <td>{{p.dateAchatVehicule | date: dateFormatColumn}}</td>
+
+                                        <td>{{p.imageUrl}}</td>
+
+
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+
+            </p-tabPanel>
+
+            <p-tabPanel header="Moniteur theoriques">
+                <div class="p-grid">
+
+                    <div class="p-col">
+                        <div class="card">
+                            <p-table [value]="selectedEcole.moniteurTheoriquesVo" [scrollable]="true"
+                                     scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>Reference</th>
+                                        <th>Nom</th>
+                                        <th>Prenom</th>
+                                        <th>Email</th>
+                                        <th>Adress</th>
+                                        <th>Phone</th>
+                                        <th>Fix</th>
+                                        <th>Lieu naissance</th>
+                                        <th>Date naissance</th>
+                                        <th>Cin</th>
+                                        <th>Gender</th>
+                                        <th>Picture</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                        <td>{{p.reference}}</td>
+
+                                        <td>{{p.nom}}</td>
+
+                                        <td>{{p.prenom}}</td>
+
+                                        <td>{{p.email}}</td>
+
+                                        <td>{{p.adress}}</td>
+
+                                        <td>{{p.phone}}</td>
+
+                                        <td>{{p.fix}}</td>
+
+                                        <td>{{p.lieuNaissance | date: dateFormatColumn}}</td>
+
+                                        <td>{{p.dateNaissance | date: dateFormatColumn}}</td>
+
+                                        <td>{{p.cin}}</td>
+
+                                        <td>{{p.genderVo?.libelle}}</td>
+                                        <td>{{p.picture}}</td>
+
+
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+
+            </p-tabPanel>
+
+            <p-tabPanel header="Moniteur pratiques">
+                <div class="p-grid">
+
+                    <div class="p-col">
+                        <div class="card">
+                            <p-table [value]="selectedEcole.moniteurPratiquesVo" [scrollable]="true"
+                                     scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>Reference</th>
+                                        <th>Nom</th>
+                                        <th>Prenom</th>
+                                        <th>Email</th>
+                                        <th>Adress</th>
+                                        <th>Phone</th>
+                                        <th>Fix</th>
+                                        <th>Lieu naissance</th>
+                                        <th>Date naissance</th>
+                                        <th>Cin</th>
+                                        <th>Gender</th>
+                                        <th>Picture</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                        <td>{{p.reference}}</td>
+
+                                        <td>{{p.nom}}</td>
+
+                                        <td>{{p.prenom}}</td>
+
+                                        <td>{{p.email}}</td>
+
+                                        <td>{{p.adress}}</td>
+
+                                        <td>{{p.phone}}</td>
+
+                                        <td>{{p.fix}}</td>
+
+                                        <td>{{p.lieuNaissance | date: dateFormatColumn}}</td>
+
+                                        <td>{{p.dateNaissance | date: dateFormatColumn}}</td>
+
+                                        <td>{{p.cin}}</td>
+
+                                        <td>{{p.genderVo?.libelle}}</td>
+                                        <td>{{p.picture}}</td>
+
+
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+
+            </p-tabPanel>
+
+            <p-tabPanel header="Planning items">
+                <div class="p-grid">
+
+                    <div class="p-col">
+                        <div class="card">
+                            <p-table [value]="selectedEcole.planningItemsVo" [scrollable]="true"
+                                     scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>Jour</th>
+                                        <th>Date ouverture</th>
+                                        <th>Date fermeture</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                        <td>{{p.jourVo?.libelle}}</td>
+                                        <td>{{p.dateOuverture | date: dateFormatColumn}}</td>
+
+                                        <td>{{p.dateFermeture | date: dateFormatColumn}}</td>
+
+
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+
+            </p-tabPanel>
+
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+    <app-ville-create-admin></app-ville-create-admin>
+    <app-gerant-create-admin></app-gerant-create-admin>
+
+    <app-marque-create-admin></app-marque-create-admin>
+    <app-type-vehicule-create-admin></app-type-vehicule-create-admin>
+    <app-gender-create-admin></app-gender-create-admin>
+    <app-gender-create-admin></app-gender-create-admin>
+    <app-jour-create-admin></app-jour-create-admin>
+
+
+</p-dialog>
+
+
+

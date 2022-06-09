@@ -1,0 +1,115 @@
+div{
+  background-color:whitesmoke;
+  padding: 5px 20px 10px 10px;
+}
+.card-header{
+  font-family:"Arial Black";
+  font-size: 30px;
+
+}
+.search{
+  font-size: 18px;
+  font-family: Verdana;
+  margin-left: 3px;
+  margin-top: 0px;
+
+}
+.lab{
+  font-family: "Arial Black";
+  font-size: 19px;
+  margin-left: 6px;
+
+}
+
+.carte{
+  position: absolute;
+  right: 2px;
+  top: 75px;
+  padding: 0px;
+
+
+
+}
+.card{
+  position: absolute;
+  top: 4px;
+  padding-right: 500px;
+  padding-bottom: 183px;
+}
+img{
+  width:30px;
+  height:30px;
+}
+button{
+  background-color: orange;
+  border-radius: 8px;
+  border-width: 0px;
+  margin-top: 15px;
+}
+#btn{
+  margin-top: 0px;
+  float: right;
+
+
+
+
+}
+input{
+  width:300px;
+  height:40px;
+  border-radius: 8px;
+  margin-right: 10px;
+  border-width: 0px;
+  margin-top: 10px;
+  top: 2550px;
+}
+.corps{
+  position: absolute;
+  top: 75px;
+  float: left;
+  margin-left: -8px;
+}
+.liste{
+  font-size: 20px;
+  font-family: normal;
+  margin-left: -15px;
+  overflow-y: scroll;
+
+
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: whitesmoke;
+
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: lightgray;
+  border-radius: 20px;
+  border: 3px solid lightgray;
+
+}
+
+
+a{
+  text-decoration: none;
+  color: black;
+
+}
+a:hover{
+  color: white;
+}
+.elt1:hover{
+  background-color: orange;
+
+}
+
+.all{
+  background-color: whitesmoke;
+  margin-left: -8px;
+
+}

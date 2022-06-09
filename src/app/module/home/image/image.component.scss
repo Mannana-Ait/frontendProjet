@@ -1,0 +1,51 @@
+.back{
+  background: #3131dc;
+  text-align: center;
+  height: 400px;
+}
+
+.head{
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.imag{
+  position: center;
+  height:1000px;
+  width: 850px;
+  margin: 35px;
+
+
+
+}
+.text-stroke{
+  color: white;
+  font-weight: bold;
+  text-align: right;
+  margin-right: 200px;
+  margin-top: 150px;
+  size: 90px;
+}
+.container{
+  margin-top: 20px;
+}
+
+.vertical{
+  display: inline-block;
+  height: 100%;
+  border-left: 2px solid rgba(255, 255, 255, 0.4);
+  position: marker;
+}
+
+#titre{
+  margin-top: 30px;
+}
+.texte_centrer {
+  position: absolute;
+  top: 60%;
+  left: 60%;
+  color: white;
+
+
+}

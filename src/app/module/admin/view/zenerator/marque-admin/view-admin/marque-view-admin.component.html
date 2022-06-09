@@ -1,0 +1,48 @@
+<p-dialog [(visible)]="viewMarqueDialog" [style]="{width: '70vw'}"
+          header="Marque" [modal]="true"
+          styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Marque">
+                <div class="p-grid">
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="1">Libelle</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Libelle" [(ngModel)]="selectedMarque.libelle"
+                               id="1" [(ngModel)]="selectedMarque.libelle"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="2">Reference</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Reference" [(ngModel)]="selectedMarque.reference"
+                               id="2" [(ngModel)]="selectedMarque.reference"
+                               autofocus>
+                    </div>
+
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+
+</p-dialog>
+
+
+

@@ -1,0 +1,115 @@
+
+<p-dialog [(visible)]="viewInscriptionCandidatDialog" [style]="{width: '70vw'}"
+        header="Inscription candidat" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Inscription candidat">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="1">Candidat</label>
+                                    <p-dropdown [options]="candidats" [(ngModel)]="selectedInscriptionCandidat.candidatVo"
+                                            id="1" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="reference"
+                                            placeholder="Candidat">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="2">Ecole</label>
+                                    <p-dropdown [options]="ecoles" [(ngModel)]="selectedInscriptionCandidat.ecoleVo"
+                                            id="2" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="reference"
+                                            placeholder="Ecole">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="3">Date inscription</label>
+                                    <p-calendar id="3" [disabled]="true"
+                                                placeholder="Date inscription"  [(ngModel)]="selectedInscriptionCandidat.dateInscription"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="4">Categorie permis</label>
+                                    <p-dropdown [options]="categoriePermiss" [(ngModel)]="selectedInscriptionCandidat.categoriePermisVo"
+                                            id="4" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libele"
+                                            placeholder="Categorie permis">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="5">Etat inscription candidat</label>
+                                    <p-dropdown [options]="etatInscriptionCandidats" [(ngModel)]="selectedInscriptionCandidat.etatInscriptionCandidatVo"
+                                            id="5" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libelle"
+                                            placeholder="Etat inscription candidat">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="6">Date delivance permis</label>
+                                    <p-calendar id="6" [disabled]="true"
+                                                placeholder="Date delivance permis"  [(ngModel)]="selectedInscriptionCandidat.dateDelivancePermis"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="7">Numero permis</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Numero permis"  [(ngModel)]="selectedInscriptionCandidat.numeroPermis"
+                                           id="7" [(ngModel)]="selectedInscriptionCandidat.numeroPermis"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="8">Num bordereau permis</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Num bordereau permis"  [(ngModel)]="selectedInscriptionCandidat.numBordereauPermis"
+                                           id="8" [(ngModel)]="selectedInscriptionCandidat.numBordereauPermis"
+                                           autofocus>
+                                </div>
+
+
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+            <app-candidat-create-chercheur></app-candidat-create-chercheur>
+            <app-ecole-create-chercheur></app-ecole-create-chercheur>
+            <app-categorie-permis-create-chercheur></app-categorie-permis-create-chercheur>
+            <app-etat-inscription-candidat-create-chercheur></app-etat-inscription-candidat-create-chercheur>
+
+
+
+</p-dialog>
+
+
+

@@ -1,0 +1,48 @@
+<p-dialog [(visible)]="viewTypeVehiculeDialog" [style]="{width: '70vw'}"
+          header="Type vehicule" [modal]="true"
+          styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Type vehicule">
+                <div class="p-grid">
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="1">Reference</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Reference" [(ngModel)]="selectedTypeVehicule.reference"
+                               id="1" [(ngModel)]="selectedTypeVehicule.reference"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="2">Libele</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Libele" [(ngModel)]="selectedTypeVehicule.libele"
+                               id="2" [(ngModel)]="selectedTypeVehicule.libele"
+                               autofocus>
+                    </div>
+
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+
+</p-dialog>
+
+
+

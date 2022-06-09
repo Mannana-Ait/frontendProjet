@@ -1,0 +1,84 @@
+<p-dialog [(visible)]="viewAvisVisiteurDialog" [style]="{width: '70vw'}"
+          header="Avis visiteur" [modal]="true"
+          styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Avis visiteur">
+                <div class="p-grid">
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="1">Reference</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Reference" [(ngModel)]="selectedAvisVisiteur.reference"
+                               id="1" [(ngModel)]="selectedAvisVisiteur.reference"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="2">Email visiteur</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Email visiteur" [(ngModel)]="selectedAvisVisiteur.emailVisiteur"
+                               id="2" [(ngModel)]="selectedAvisVisiteur.emailVisiteur"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="3">Objet</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Objet" [(ngModel)]="selectedAvisVisiteur.objet"
+                               id="3" [(ngModel)]="selectedAvisVisiteur.objet"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="4">Message</label>
+                        <textarea id="4" pInputTextarea rows="5" cols="30" [disabled]="true"
+                                  placeholder="Message" [(ngModel)]="selectedAvisVisiteur.message"
+                        ></textarea>
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="5">Ratting</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2" id="5" [disabled]="true"
+                                       placeholder="Ratting" [(ngModel)]="selectedAvisVisiteur.ratting"
+                                       [(ngModel)]="selectedAvisVisiteur.ratting"></p-inputNumber>
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="6">Type avis</label>
+                        <p-dropdown [options]="typeAviss" [(ngModel)]="selectedAvisVisiteur.typeAvisVo"
+                                    id="6" [filter]="true" filterMatchMode="contains"
+                                    [showClear]="true" [disabled]="true"
+                                    optionLabel="libelle"
+                                    placeholder="Type avis">
+                        </p-dropdown>
+                    </div>
+
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+    <app-type-avis-create-admin></app-type-avis-create-admin>
+
+
+</p-dialog>
+
+
+

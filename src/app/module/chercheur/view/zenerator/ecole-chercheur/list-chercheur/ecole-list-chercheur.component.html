@@ -1,0 +1,369 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-toast></p-toast>
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                    <button pButton pRipple label="Nouveau" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                            (click)="openCreateEcole('ecole')"></button>
+
+
+                    <button pButton pRipple label="Recherche"
+                            icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                            class="p-button-success p-mr-2 p-mb-2"
+                            (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <div class="flex">
+                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help"
+                                       [model]="excelPdfButons"></p-splitButton>
+                    </div>
+                </ng-template>
+
+            </p-toolbar>
+            <p-toolbar *ngIf="findByCriteriaShow">
+
+                <div class="align-form-search">
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="1"
+                                           type="text" [(ngModel)]="searchEcole.reference">
+                                    <label for="1">Reference</label>
+                                </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="villes" [(ngModel)]="searchEcole.villeVo"
+                                            id="2"
+                                            [filter]="true" [showClear]="true" placeholder="Ville"
+                                            optionLabel="libelle">
+                                </p-dropdown>
+                            </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchEcole.altitudeMin"
+                                                             id="3-1"></p-inputNumber>
+                                              <label for="3-1">Altitude Min</label>
+                                       </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchEcole.altitudeMax"
+                                                             id="3-2"></p-inputNumber>
+                                             <label for="3-2">Altitude Max</label>
+                                       </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchEcole.angitudeMin"
+                                                             id="4-1"></p-inputNumber>
+                                              <label for="4-1">Angitude Min</label>
+                                       </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchEcole.angitudeMax"
+                                                             id="4-2"></p-inputNumber>
+                                             <label for="4-2">Angitude Max</label>
+                                       </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="5"
+                                           type="text" [(ngModel)]="searchEcole.nom">
+                                    <label for="5">Nom</label>
+                                </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="7"
+                                           type="text" [(ngModel)]="searchEcole.numAutorisation">
+                                    <label for="7">Num autorisation</label>
+                                </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="8"
+                                           type="text" [(ngModel)]="searchEcole.numFix">
+                                    <label for="8">Num fix</label>
+                                </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="9"
+                                           type="text" [(ngModel)]="searchEcole.numPhone">
+                                    <label for="9">Num phone</label>
+                                </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="10"
+                                           type="text" [(ngModel)]="searchEcole.email">
+                                    <label for="10">Email</label>
+                                </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchEcole.tauxReussiteMin"
+                                                             id="11-1"></p-inputNumber>
+                                              <label for="11-1">Taux reussite Min</label>
+                                       </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchEcole.tauxReussiteMax"
+                                                             id="11-2"></p-inputNumber>
+                                             <label for="11-2">Taux reussite Max</label>
+                                       </span>
+
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchEcole.dateCreationMin"
+                                    id="12-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="12-1">Date creation Min</label>
+                        </span>
+
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchEcole.dateCreationMax"
+                                    id="12-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="12-2">Date creation Max</label>
+                        </span>
+
+
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchEcole.dateAbonnementMin"
+                                    id="13-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="13-1">Date abonnement Min</label>
+                        </span>
+
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchEcole.dateAbonnementMax"
+                                    id="13-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="13-2">Date abonnement Max</label>
+                        </span>
+
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="gerants" [(ngModel)]="searchEcole.gerantVo"
+                                            id="14"
+                                            [filter]="true" [showClear]="true" placeholder="Gerant"
+                                            optionLabel="reference">
+                                </p-dropdown>
+                            </span>
+                </div>
+
+                <div class="align-search-button">
+                    <button pButton pRipple label="Valider" icon="pi pi-sort-amount-down"
+                            class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                </div>
+            </p-toolbar>
+
+
+            <p-table #dt [value]="ecoles" [columns]="cols" [rows]="4" [paginator]="true"
+                     [globalFilterFields]="['reference', 'villeVolibelle', 'altitude', 'angitude', 'nom', 'numAutorisation', 'numFix', 'numPhone', 'email', 'tauxReussite', 'dateCreation', 'dateAbonnement', 'gerantVoreference']"
+                     [(selection)]="selectedEcole"
+                     [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                     currentPageReportTemplate="Les éléments de {first} à {last} sur {totalRecords}"
+                     [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Liste des ecoles</h5>
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Chercher..."
+                                   (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+
+
+                        <th pSortableColumn="reference">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Reference</span>
+                                <p-sortIcon field="reference"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <th pSortableColumn="ville">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Ville</span>
+                                <p-sortIcon field="ville"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <th pSortableColumn="altitude">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Altitude</span>
+                                <p-sortIcon field="altitude"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <th pSortableColumn="angitude">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Angitude</span>
+                                <p-sortIcon field="angitude"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <th pSortableColumn="nom">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Nom</span>
+                                <p-sortIcon field="nom"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <th pSortableColumn="numAutorisation">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Num autorisation</span>
+                                <p-sortIcon field="numAutorisation"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <th pSortableColumn="numFix">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Num fix</span>
+                                <p-sortIcon field="numFix"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <th pSortableColumn="numPhone">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Num phone</span>
+                                <p-sortIcon field="numPhone"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <th pSortableColumn="email">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Email</span>
+                                <p-sortIcon field="email"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <!--
+                        <th pSortableColumn="tauxReussite">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Taux reussite</span>
+                                <p-sortIcon field="tauxReussite"></p-sortIcon>
+                            </div>
+                        </th>
+                        -->
+
+
+                        <!--
+                        <th pSortableColumn="dateCreation">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Date creation</span>
+                                <p-sortIcon field="dateCreation"></p-sortIcon>
+                            </div>
+                        </th>
+                        -->
+
+
+                        <!--
+                        <th pSortableColumn="dateAbonnement">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Date abonnement</span>
+                                <p-sortIcon field="dateAbonnement"></p-sortIcon>
+                            </div>
+                        </th>
+                        -->
+
+
+                        <!--
+                        <th pSortableColumn="gerant">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Gerant</span>
+                                <p-sortIcon field="gerant"></p-sortIcon>
+                            </div>
+                        </th>
+                        -->
+
+
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-ecole>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="ecole"></p-tableCheckbox>
+                        </td>
+
+                        <td>{{ecole.reference}}</td>
+
+
+                        <td>{{ecole.villeVo?.libelle}}</td>
+
+
+                        <td>{{ecole.altitude}}</td>
+
+
+                        <td>{{ecole.angitude}}</td>
+
+
+                        <td>{{ecole.nom}}</td>
+
+
+                        <td>{{ecole.numAutorisation}}</td>
+
+
+                        <td>{{ecole.numFix}}</td>
+
+
+                        <td>{{ecole.numPhone}}</td>
+
+
+                        <!--
+                            <td>{{ecole.email}}</td>
+                        -->
+
+                        <!--
+                            <td>{{ecole.tauxReussite}}</td>
+                        -->
+
+                        <!--
+                           <td>{{ecole.dateCreation | date:'dd-M-yyyy' }}</td>
+                        -->
+
+                        <!--
+                           <td>{{ecole.dateAbonnement | date:'dd-M-yyyy' }}</td>
+                        -->
+
+                        <!--
+                           <td>{{ecole.gerantVo?.reference}}</td>
+                        -->
+
+
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil"
+                                    class="p-button-rounded p-button-success p-mr-2"
+                                    (click)="editEcole(ecole)"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                    (click)="viewEcole(ecole)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-mr-2"
+                                    (click)="deleteEcole(ecole)"></button>
+
+                            <button pButton pRipple icon="pi pi-copy"
+                                    class="p-button-rounded p-button-raised p-button-warning"
+                                    (click)="duplicateEcole(ecole)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En totale
+                        il {{ecoles ? ecoles.length == 1 ? 'y a' : 'y a' : 'y a' }} {{ecoles ? ecoles.length : 0 }} {{ecoles ? ecoles.length == 1 ? 'ecole' : 'ecoles' : 0 }}
+                        .
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-ecole-create-chercheur></app-ecole-create-chercheur>
+        <app-ecole-edit-chercheur></app-ecole-edit-chercheur>
+        <app-ecole-view-chercheur></app-ecole-view-chercheur>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

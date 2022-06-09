@@ -1,0 +1,149 @@
+<p-dialog [(visible)]="viewGerantDialog" [style]="{width: '70vw'}"
+          header="Gerant" [modal]="true"
+          styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Gerant">
+                <div class="p-grid">
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="1">Reference</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Reference" [(ngModel)]="selectedGerant.reference"
+                               id="1" [(ngModel)]="selectedGerant.reference"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="2">Nom</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Nom" [(ngModel)]="selectedGerant.nom"
+                               id="2" [(ngModel)]="selectedGerant.nom"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="3">Prenom</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Prenom" [(ngModel)]="selectedGerant.prenom"
+                               id="3" [(ngModel)]="selectedGerant.prenom"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="4">Email</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Email" [(ngModel)]="selectedGerant.email"
+                               id="4" [(ngModel)]="selectedGerant.email"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="5">Adress</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Adress" [(ngModel)]="selectedGerant.adress"
+                               id="5" [(ngModel)]="selectedGerant.adress"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="6">Phone</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Phone" [(ngModel)]="selectedGerant.phone"
+                               id="6" [(ngModel)]="selectedGerant.phone"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="7">Fix</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Fix" [(ngModel)]="selectedGerant.fix"
+                               id="7" [(ngModel)]="selectedGerant.fix"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="8">Lieu naissance</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Lieu naissance" [(ngModel)]="selectedGerant.lieuNaissance"
+                               id="8" [(ngModel)]="selectedGerant.lieuNaissance"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="9">Date naissance</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Date naissance" [(ngModel)]="selectedGerant.dateNaissance"
+                               id="9" [(ngModel)]="selectedGerant.dateNaissance"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="10">Cin</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Cin" [(ngModel)]="selectedGerant.cin"
+                               id="10" [(ngModel)]="selectedGerant.cin"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="11">Gender</label>
+                        <p-dropdown [options]="genders" [(ngModel)]="selectedGerant.genderVo"
+                                    id="11" [filter]="true" filterMatchMode="contains"
+                                    [showClear]="true" [disabled]="true"
+                                    optionLabel="libelle"
+                                    placeholder="Gender">
+                        </p-dropdown>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="12">Picture</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Picture" [(ngModel)]="selectedGerant.picture"
+                               id="12" [(ngModel)]="selectedGerant.picture"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="13">Date join</label>
+                        <p-calendar id="13" [disabled]="true"
+                                    placeholder="Date join" [(ngModel)]="selectedGerant.dateJoin"
+                                    dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+    <app-gender-create-admin></app-gender-create-admin>
+
+
+</p-dialog>
+
+
+

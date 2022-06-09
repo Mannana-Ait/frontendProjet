@@ -1,0 +1,75 @@
+<p-dialog [(visible)]="viewPermisDialog" [style]="{width: '70vw'}"
+          header="Permis" [modal]="true"
+          styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Permis">
+                <div class="p-grid">
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="1">Reference</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Reference" [(ngModel)]="selectedPermis.reference"
+                               id="1" [(ngModel)]="selectedPermis.reference"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="2">Date delivre</label>
+                        <p-calendar id="2" [disabled]="true"
+                                    placeholder="Date delivre" [(ngModel)]="selectedPermis.dateDelivre"
+                                    dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="3">Number permis</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2" id="3" [disabled]="true"
+                                       placeholder="Number permis" [(ngModel)]="selectedPermis.numberPermis"
+                                       [(ngModel)]="selectedPermis.numberPermis"></p-inputNumber>
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="4">Nom delivreur</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Nom delivreur" [(ngModel)]="selectedPermis.nomDelivreur"
+                               id="4" [(ngModel)]="selectedPermis.nomDelivreur"
+                               autofocus>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="5">Categorie permis</label>
+                        <p-dropdown [options]="categoriePermiss" [(ngModel)]="selectedPermis.categoriePermisVo"
+                                    id="5" [filter]="true" filterMatchMode="contains"
+                                    [showClear]="true" [disabled]="true"
+                                    optionLabel="libele"
+                                    placeholder="Categorie permis">
+                        </p-dropdown>
+                    </div>
+
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+    <app-categorie-permis-create-chercheur></app-categorie-permis-create-chercheur>
+
+
+</p-dialog>
+
+
+

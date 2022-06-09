@@ -1,0 +1,140 @@
+        <p-dialog [(visible)]="editInscriptionCandidatDialog" [style]="{width: '70vw'}"
+                header="Inscription candidat" [modal]="true"
+                styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+
+
+            <ng-template pTemplate="content" >
+                <p-tabView>
+                    <p-tabPanel header="Inscription candidat">
+                        <div class="p-grid">
+
+                                        <div class="p-field p-col-11 p-md-3">
+                                            <label for="1">Candidat</label>
+                                            <p-dropdown [options]="candidats" [(ngModel)]="selectedInscriptionCandidat.candidatVo"
+                                                    id="1" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="reference"
+                                                    placeholder="Candidat"  >
+                                            </p-dropdown>
+                                            
+                                        </div>
+                                        <div class="p-col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatecandidat('candidat')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                                        <div class="p-field p-col-11 p-md-3">
+                                            <label for="2">Ecole</label>
+                                            <p-dropdown [options]="ecoles" [(ngModel)]="selectedInscriptionCandidat.ecoleVo"
+                                                    id="2" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="reference"
+                                                    placeholder="Ecole"  >
+                                            </p-dropdown>
+                                            
+                                        </div>
+                                        <div class="p-col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreateecole('ecole')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                                        <div class="p-field p-col-12 p-md-4">
+                                            <label for="3">Date inscription</label>
+                                            <p-calendar id="3"
+                                                        placeholder="Date inscription"  [(ngModel)]="selectedInscriptionCandidat.dateInscription"
+                                                    dateFormat="{{dateFormat}}"  >
+                                            </p-calendar>
+                                            
+                                        </div>
+
+                                        <div class="p-field p-col-11 p-md-3">
+                                            <label for="4">Categorie permis</label>
+                                            <p-dropdown [options]="categoriePermiss" [(ngModel)]="selectedInscriptionCandidat.categoriePermisVo"
+                                                    id="4" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="libele"
+                                                    placeholder="Categorie permis"  >
+                                            </p-dropdown>
+                                            
+                                        </div>
+                                        <div class="p-col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatecategoriePermis('categoriePermis')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                                        <div class="p-field p-col-11 p-md-3">
+                                            <label for="5">Etat inscription candidat</label>
+                                            <p-dropdown [options]="etatInscriptionCandidats" [(ngModel)]="selectedInscriptionCandidat.etatInscriptionCandidatVo"
+                                                    id="5" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="libelle"
+                                                    placeholder="Etat inscription candidat"  >
+                                            </p-dropdown>
+                                            
+                                        </div>
+                                        <div class="p-col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreateetatInscriptionCandidat('etatInscriptionCandidat')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                                        <div class="p-field p-col-12 p-md-4">
+                                            <label for="6">Date delivance permis</label>
+                                            <p-calendar id="6"
+                                                        placeholder="Date delivance permis"  [(ngModel)]="selectedInscriptionCandidat.dateDelivancePermis"
+                                                    dateFormat="{{dateFormat}}"  >
+                                            </p-calendar>
+                                            
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-4">
+                                            <label for="7">Numero permis</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Numero permis"
+                                                   id="7" [(ngModel)]="selectedInscriptionCandidat.numeroPermis"
+                                                     />
+                                            
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-4">
+                                            <label for="8">Num bordereau permis</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Num bordereau permis"
+                                                   id="8" [(ngModel)]="selectedInscriptionCandidat.numBordereauPermis"
+                                                     />
+                                            
+                                        </div>
+
+
+
+                        </div>
+                    </p-tabPanel>
+
+                </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="p-grid">
+                        <div>
+                            <button pButton pRipple label="Annuler" icon="pi pi-times"
+                                    class="p-button-text" (click)="hideCreateDialog()"></button>
+                        </div>
+                    <div>
+                        <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px" (click)="edit()"></button>
+                    </div>
+                </div>
+            </ng-template>
+
+                    <app-candidat-create-chercheur></app-candidat-create-chercheur>
+                    <app-ecole-create-chercheur></app-ecole-create-chercheur>
+                    <app-categorie-permis-create-chercheur></app-categorie-permis-create-chercheur>
+                    <app-etat-inscription-candidat-create-chercheur></app-etat-inscription-candidat-create-chercheur>
+
+
+    </p-dialog>

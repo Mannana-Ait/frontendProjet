@@ -1,0 +1,24 @@
+
+.nav-item a{
+  color: black;
+  font-weight: bold;
+}
+
+.menu{
+  margin-left: 500px;
+}
+.navbar-brand{
+  margin-left: 60px;
+}
+#btn{
+  background: #9c5cc5;
+  color: white;
+}
+.nav-item a:active{
+  text-decoration: orange underline solid;
+}
+.nav-item a:hover{
+  text-decoration: underline solid;
+}
+
+
